@@ -239,4 +239,6 @@ if(TURBO_ENABLE_INSTALL)
       PATTERN "test/testdata" EXCLUDE
     )
 
+  install(DIRECTORY dict DESTINATION share/libtext)
+
 endif()  # TURBO_ENABLE_INSTALL
