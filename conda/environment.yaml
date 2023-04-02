@@ -1,0 +1,6 @@
+name: libtext-dev
+channels:
+  - conda-forge
+  - mgottingen
+dependencies:
+  - turbo
