@@ -3,33 +3,33 @@
 {% set number = GIT_DESCRIBE_NUMBER %}
 
 package:
-  name: turbo-pkg
+  name: libtext-pkg
   version: {{ version }}
 
 build:
   number: {{ number }}
 
 about:
-  home: https://github.com/gottingen/turbo
+  home: https://github.com/gottingen/libtext
   license: Apache License 2
   license_family: APACHE
   license_file: LICENSE
-  summary: A library for c++ based libraries and rpc libraries
+  summary: A c++ library for text processing for searching
 
 source:
   git_url: ../
 
 outputs:
-  - name: turbo
+  - name: libtext
     script: bld.sh   # [not win]
     script: bld.bat  # [win]
     build:
       string: "h{{ GIT_DESCRIBE_HASH }}_{{ number }}"
       run_exports:
-        - {{ pin_compatible('turbo', exact=True) }}
+        - {{ pin_compatible('libtext', exact=True) }}
     test:
       commands:
-        - test -f $PREFIX/lib/libturbo.so              # [linux]
-        - test -f $PREFIX/lib/libturbo.dylib           # [osx]
+      #  - test -f $PREFIX/lib/libturbo.so              # [linux]
+      #  - test -f $PREFIX/lib/libturbo.dylib           # [osx]
       #  - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
       #  - conda inspect objects -p $PREFIX $PKG_NAME   # [osx]

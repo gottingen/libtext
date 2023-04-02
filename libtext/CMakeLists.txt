@@ -1,5 +1,5 @@
 #
-# Copyright 2020 The Turbo Authors.
+# Copyright 2023 The Turbo Authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,15 +15,15 @@
 #
 
 
-set(LIBTEXT_ALL_SRC
-        "segment/segment.cc"
+file(GLOB_RECURSE LIBTEXT_ALL_HRDS
+        "segment/*.h"
         )
 
 turbo_cc_library(
         NAME
         libtext
-        SRCS
-        ${LIBTEXT_ALL_SRC}
+        HRDS
+        ${LIBTEXT_ALL_HRDS}
         COPTS
         ${TURBO_DEFAULT_COPTS}
         ${TURBO_RANDOM_RANDEN_COPTS}
