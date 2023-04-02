@@ -15,15 +15,15 @@
 #
 
 
-set(LIBTEXT_ALL_SRC
-        "segment/segment.cc"
+file(GLOB_RECURSE LIBTEXT_ALL_HRDS
+        "segment/*.h"
         )
 
 turbo_cc_library(
         NAME
         libtext
-        SRCS
-        ${LIBTEXT_ALL_SRC}
+        HRDS
+        ${LIBTEXT_ALL_HRDS}
         COPTS
         ${TURBO_DEFAULT_COPTS}
         ${TURBO_RANDOM_RANDEN_COPTS}
