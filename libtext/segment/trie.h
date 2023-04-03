@@ -175,13 +175,13 @@ public:
         return;
       }
       kmIter = ptNode->next->find(*citer);
-      // 如果map中不存在,跳出循环
+      // if not exist, break loop
       if (ptNode->next->end() == kmIter) {
         break;
       }
-      // 从unordered_map中擦除该项
+      // erase from flat_hash_map
       ptNode->next->erase(*citer);
-      // 删除该node
+      // erase node
       ptNode = kmIter->second;
       delete ptNode;
       break;

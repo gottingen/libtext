@@ -93,7 +93,7 @@ public:
     keywords.reserve(wordmap.size());
     for (std::map<std::string, Word>::iterator itr = wordmap.begin();
          itr != wordmap.end(); ++itr) {
-      std::unordered_map<std::string, double>::const_iterator cit =
+      turbo::flat_hash_map<std::string, double>::const_iterator cit =
           idfMap_.find(itr->first);
       if (cit != idfMap_.end()) {
         itr->second.weight *= cit->second;
@@ -154,7 +154,7 @@ private:
   }
 
   MixSegment segment_;
-  std::unordered_map<std::string, double> idfMap_;
+  turbo::flat_hash_map<std::string, double> idfMap_;
   double idfAverage_;
 
   std::unordered_set<std::string> stopWords_;
@@ -168,13 +168,12 @@ inline std::ostream &operator<<(std::ostream &os,
 }
 
 struct KeywordExtractorWordFormatter {
-  void operator()(std::string* s, const KeywordExtractor::Word &word) {
-    turbo::StrAppend(s, "{\"word\": \"", word.word,
-                     "\", \"offset\": [", turbo::StrJoin(word.offsets, ", "),
+  void operator()(std::string *s, const KeywordExtractor::Word &word) {
+    turbo::StrAppend(s, "{\"word\": \"", word.word, "\", \"offset\": [",
+                     turbo::StrJoin(word.offsets, ", "),
                      "], \"weight\": ", word.weight, "}");
   }
 };
-
 
 } // namespace libtext
 
