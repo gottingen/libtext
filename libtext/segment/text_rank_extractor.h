@@ -39,8 +39,6 @@ private:
 
     typedef std::map<Node, double> Edges;
     typedef std::map<Node, Edges> Graph;
-    // typedef std::unordered_map<Node,double> Edges;
-    // typedef std::unordered_map<Node,Edges> Graph;
 
     double d;
     Graph graph;
