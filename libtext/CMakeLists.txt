@@ -15,15 +15,26 @@
 #
 
 
-file(GLOB_RECURSE LIBTEXT_ALL_HRDS
-        "segment/*.h"
+set(NOR_SRCS
+        "normalize/emoji_filter.cc"
+        "normalize/emoji_unicode_alias_codes_en.cc"
+        "normalize/emoji_unicode_codes_en.cc"
         )
+set(COM_SRCS
+        "common/prefix_map.cc"
+        "common/prefix_matcher.cc"
+        )
+
+set(LIBTEXT_ALL_SRCS
+        ${COM_SRCS}
+        ${NOR_SRCS}
+)
 
 turbo_cc_library(
         NAME
         libtext
-        HRDS
-        ${LIBTEXT_ALL_HRDS}
+        SRCS
+        ${LIBTEXT_ALL_SRCS}
         COPTS
         ${TURBO_DEFAULT_COPTS}
         ${TURBO_RANDOM_RANDEN_COPTS}
@@ -39,4 +50,5 @@ if (TURBO_BUILD_TESTING)
  file(COPY ${PROJECT_SOURCE_DIR}/test DESTINATION ${PROJECT_BINARY_DIR}/libtext)
  file(COPY ${PROJECT_SOURCE_DIR}/dict DESTINATION ${PROJECT_BINARY_DIR}/libtext)
  add_subdirectory(segment)
+ add_subdirectory(common)
 endif (TURBO_BUILD_TESTING)
