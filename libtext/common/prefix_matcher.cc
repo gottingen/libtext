@@ -22,6 +22,15 @@
 
 namespace libtext {
 
+namespace {
+static constexpr const size_t UTF8_BYTE_LEN[16] = {1, 1, 1, 1, 1, 1, 1, 1,
+                                                   1, 1, 1, 1, 2, 2, 3, 4};
+static inline constexpr size_t OneCharLen(const char *src) noexcept {
+  return UTF8_BYTE_LEN[(*((const unsigned char *)src)) >> 4];
+}
+
+}
+
 PrefixMatcher::PrefixMatcher(const std::set<std::string> &dic) {
   if (dic.empty())
     return;

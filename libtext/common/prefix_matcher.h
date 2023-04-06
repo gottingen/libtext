@@ -50,14 +50,6 @@ public:
   size_t PrefixSearch(const char *w, size_t w_len) const;
 
 private:
-  static constexpr const size_t UTF8_BYTE_LEN[16] = {1, 1, 1, 1, 1, 1, 1, 1,
-                                                    1, 1, 1, 1, 2, 2, 3, 4};
-
-  static inline constexpr size_t OneCharLen(const char *src) noexcept {
-    return UTF8_BYTE_LEN[(*((const unsigned char *)src)) >> 4];
-  }
-
-private:
   std::unique_ptr<cedar_t> trie_;
 };
 
