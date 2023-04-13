@@ -13,7 +13,7 @@
 // limitations under the License.
 //
 
-#include <libtext/segment/seg.h>
+#include <libtext/jieba/seg.h>
 #include <turbo/strings/str_join.h>
 
 using namespace std;
