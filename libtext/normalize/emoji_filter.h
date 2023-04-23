@@ -21,8 +21,8 @@
 #include <cstdint>
 #include <string>
 #include <map>
-#include <turbo/strings/string_view.h>
-#include <turbo/strings/inlined_string.h>
+#include "turbo/strings/string_view.h"
+#include "turbo/strings/inlined_string.h"
 #include "libtext/common/prefix_map.h"
 
 namespace libtext {
@@ -49,10 +49,10 @@ public:
     return emoji_codes_->PrefixSearch(ptr + pos, len - pos, nullptr);
   }
 
-  turbo::inlined_string Replace(const turbo::string_view &str, const turbo::string_view &repl,
+  turbo::inlined_string Replace(const std::string_view &str, const std::string_view &repl,
                  bool keep_all = true) const;
 
-  turbo::inlined_string Filter(const turbo::string_view &str) const;
+  turbo::inlined_string Filter(const std::string_view &str) const;
 
 private:
   Options opt_;

@@ -22,7 +22,7 @@
 #include <vector>
 
 #include "libtext/common/cedar.h"
-#include <turbo/strings/inlined_string.h>
+#include "turbo/strings/inlined_string.h"
 
 namespace libtext {
 

@@ -17,7 +17,7 @@
 #define LIBTEXT_SEGMENT_SEG_BASE_H_
 
 #include "libtext/jieba/pre_filter.h"
-#include <turbo/log/logging.h>
+#include "turbo/log/logging.h"
 #include <cassert>
 
 namespace libtext {

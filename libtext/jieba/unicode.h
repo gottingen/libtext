@@ -19,9 +19,9 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <string>
-#include <turbo/container/inlined_vector.h>
-#include <turbo/strings/string_view.h>
-#include <turbo/strings/str_join.h>
+#include "turbo/container/inlined_vector.h"
+#include "turbo/strings/string_view.h"
+#include "turbo/strings/str_join.h"
 #include <vector>
 
 namespace libtext {

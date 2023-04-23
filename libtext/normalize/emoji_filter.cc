@@ -57,7 +57,7 @@ EmojiFilter::EmojiFilter(Options opt) {
   emoji_codes_ = std::make_shared<PrefixMap>(dic);
 }
 
-turbo::inlined_string EmojiFilter::Replace(const turbo::string_view& str, const turbo::string_view& repl, bool keep_all) const {
+turbo::inlined_string EmojiFilter::Replace(const std::string_view& str, const std::string_view& repl, bool keep_all) const {
   if (repl.empty()) {
     return Filter(str);
   } else {
@@ -86,7 +86,7 @@ turbo::inlined_string EmojiFilter::Replace(const turbo::string_view& str, const 
   }
 }
 
-turbo::inlined_string EmojiFilter::Filter(const turbo::string_view& str) const {
+turbo::inlined_string EmojiFilter::Filter(const std::string_view& str) const {
   turbo::inlined_string result;
   auto ptr = str.data();
   auto len = str.size();

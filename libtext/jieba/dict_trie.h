@@ -27,8 +27,8 @@
 #include <map>
 #include <stdint.h>
 #include <string>
-#include <turbo/log/logging.h>
-#include <turbo/strings/str_split.h>
+#include "turbo/log/logging.h"
+#include "turbo/strings/str_split.h"
 
 namespace libtext {
 
