@@ -23,6 +23,7 @@ turbo_cc_test(
         COPTS
         ${TURBO_TEST_COPTS}
         DEPS
+        turbo
         libtext::libtext
         ${TURBO_LIBRARIES}
         GTest::gtest

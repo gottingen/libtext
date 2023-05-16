@@ -16,7 +16,7 @@
 
 # https://github.com/google/oss-policies-info/blob/main/foundational-cxx-support-matrix.md
 # As of 2022-09-06, CMake 3.10 is the minimum supported version.
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.15)
 
 # Compiler id for Apple Clang is now AppleClang.
 if (POLICY CMP0025)
@@ -93,9 +93,9 @@ include(GNUInstallDirs)
 include(TurboHelpers)
 include(Simd)
 
-find_package(Turbo REQUIRED)
+include(deps)
 
-include_directories(${TURBO_INCLUDE_DIR})
+include_directories(${turbo_SOURCE_DIR})
 
 # include current path
 list(APPEND TURBO_COMMON_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR})
@@ -182,6 +182,8 @@ if (APPLE)
 elseif (${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
   list(APPEND TURBO_DYLINK rt dl pthread)
 endif ()
+
+add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
 
 add_subdirectory(libtext)
 

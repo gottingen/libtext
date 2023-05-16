@@ -41,6 +41,7 @@ turbo_cc_library(
         ${TURBO_SIMD_FLAGS}
         DEPS
         ${TURBO_DYLINK}
+        turbo
 )
 
 if (TURBO_BUILD_TESTING)

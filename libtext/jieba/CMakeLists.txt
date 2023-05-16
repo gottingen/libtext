@@ -8,7 +8,7 @@ turbo_cc_test(
         COPTS
         ${TURBO_TEST_COPTS}
         DEPS
-        ${TURBO_LIBRARIES}
+        turbo
         GTest::gtest
         GTest::gtest_main
 )
@@ -21,7 +21,7 @@ turbo_cc_test(
         COPTS
         ${TURBO_TEST_COPTS}
         DEPS
-        ${TURBO_LIBRARIES}
+        turbo
         GTest::gtest
         GTest::gtest_main
 )
@@ -34,7 +34,7 @@ turbo_cc_test(
         COPTS
         ${TURBO_TEST_COPTS}
         DEPS
-        ${TURBO_LIBRARIES}
+        turbo
         GTest::gtest
         GTest::gtest_main
 )
@@ -47,7 +47,7 @@ turbo_cc_test(
         COPTS
         ${TURBO_TEST_COPTS}
         DEPS
-        ${TURBO_LIBRARIES}
+        turbo
         GTest::gtest
         GTest::gtest_main
 )
@@ -60,7 +60,7 @@ turbo_cc_test(
         COPTS
         ${TURBO_TEST_COPTS}
         DEPS
-        ${TURBO_LIBRARIES}
+        turbo
         GTest::gtest
         GTest::gtest_main
 )
@@ -73,7 +73,7 @@ turbo_cc_test(
         COPTS
         ${TURBO_TEST_COPTS}
         DEPS
-        ${TURBO_LIBRARIES}
+        turbo
         GTest::gtest
         GTest::gtest_main
 )
@@ -86,7 +86,7 @@ turbo_cc_test(
         COPTS
         ${TURBO_TEST_COPTS}
         DEPS
-        ${TURBO_LIBRARIES}
+        turbo
         GTest::gtest
         GTest::gtest_main
 )
