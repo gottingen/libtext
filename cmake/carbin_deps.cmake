@@ -1,4 +1,3 @@
-#!/bin/bash
 #
 # Copyright 2023 The Carbin Authors.
 #
@@ -14,19 +13,29 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-set -e
 
-mkdir build
-cd build
-cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCARBIN_BUILD_TEST=OFF \
-        -DCARBIN_BUILD_BENCHMARK=OFF \
-        -DCARBIN_BUILD_EXAMPLES=OFF \
-        -DCARBIN_USE_CXX11_ABI=ON \
-        -DBUILD_SHARED_LIBRARY=ON \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DBUILD_STATIC_LIBRARY=OFF
+if (CARBIN_BUILD_TEST)
+    enable_testing()
+    include(require_gtest)
+    include(require_gmock)
+endif (CARBIN_BUILD_TEST)
 
-cmake --build .
-cmake --build . --target install
+set(CARBIN_SYSTEM_DYLINK)
+if (APPLE)
+    find_library(CoreFoundation CoreFoundation)
+    list(APPEND CARBIN_SYSTEM_DYLINK ${CoreFoundation} pthread)
+elseif (${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+    list(APPEND CARBIN_SYSTEM_DYLINK rt dl pthread)
+endif ()
+
+include(require_turbo)
+set(CARBIN_DEPS_LINK
+        ${TURBO_LIB}
+        ${CARBIN_SYSTEM_DYLINK}
+        )
+
+
+
+
+
+

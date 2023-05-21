@@ -1,4 +1,3 @@
-#!/bin/bash
 #
 # Copyright 2023 The Carbin Authors.
 #
@@ -14,19 +13,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-set -e
 
-mkdir build
-cd build
-cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCARBIN_BUILD_TEST=OFF \
-        -DCARBIN_BUILD_BENCHMARK=OFF \
-        -DCARBIN_BUILD_EXAMPLES=OFF \
-        -DCARBIN_USE_CXX11_ABI=ON \
-        -DBUILD_SHARED_LIBRARY=ON \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DBUILD_STATIC_LIBRARY=OFF
+##############################################################
+set(CMAKE_CXX_FLAGS "-std=c++17")
+set(CMAKE_CXX_FLAGS_DEBUG "-g3 -O0")
+set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
+set(CMAKE_CXX_FLAGS_RELWITHDEBINFO  "-g -O2")
 
-cmake --build .
-cmake --build . --target install
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Release)
+endif ()
+
+if(DEFINED ENV{CARBIN_CXX_FLAGS})
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} $ENV{CARBIN_CXX_FLAGS}")
+endif ()
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${USER_CXX_FLAGS}")
+
+###################
+list(APPEND USER_CXX_FLAGS "-ftls-model=global-dynamic" "-Wno-deprecated-declarations")

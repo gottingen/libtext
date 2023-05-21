@@ -1,6 +1,9 @@
 name: libtext-dev
 channels:
   - conda-forge
-  - mgottingen
+  - titan-search
 dependencies:
+  - gxx
+  - gcc
+  - sysroot_linux-64 =2.17
   - turbo
