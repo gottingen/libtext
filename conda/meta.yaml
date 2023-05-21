@@ -29,10 +29,15 @@ outputs:
         - {{ pin_compatible('libtext', exact=True) }}
     requirements:
       build:
+        - {{ compiler('cxx') }}
+        - sysroot_linux-64 =2.17  # [linux64]
+        - cmake >=3.20, <=3.23
         - turbo
       host:
+        - sysroot_linux-64 =2.17  # [linux64]
         - turbo
       run:
+        - sysroot_linux-64 =2.17  # [linux64]
         - turbo
 
     test:
